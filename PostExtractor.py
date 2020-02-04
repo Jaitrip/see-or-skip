@@ -33,7 +33,7 @@ class PostExtractor:
         auth.set_access_token(self.access_token, self.access_token_secret)
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
-        tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(5000)
+        tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(100)
         unique_clean_tweets = self.clean_up_tweets(tweets)
 
         return unique_clean_tweets
@@ -49,5 +49,5 @@ class PostExtractor:
                 writer.writerow([tweet, 0])
 
 
-post_extractor = PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
-post_extractor.extract_training_data("Birds of prey", "./data/twitter_data.csv")
+#post_extractor = PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
+#post_extractor.extract_training_data("Black Widow", "./data/twitter_data.csv")
