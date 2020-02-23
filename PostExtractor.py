@@ -34,8 +34,10 @@ class PostExtractor:
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
         tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(100)
+        print(tweets)
+        print("tweets extracted")
         unique_clean_tweets = self.clean_up_tweets(tweets)
-
+        print("tweets cleaned")
         return unique_clean_tweets
 
     def extract_training_data(self, movie_name, dataset_path):
@@ -46,7 +48,7 @@ class PostExtractor:
             writer = csv.writer(csvFile)
 
             for tweet in tweets:
-                writer.writerow([tweet, 0])
+                writer.writerow([tweet, 2])
 
 
 #post_extractor = PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)

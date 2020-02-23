@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6cf48e1-4b8b-41bc-a5ed-229b6616125d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/MovieClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PostExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/PostExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrainMovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainMovieClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/twitter_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/twitter_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/encoder.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/models/encoder.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/twitter_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/models/twitter_model.h5" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +60,11 @@
       <workItem from="1580690026614" duration="675000" />
       <workItem from="1580737202250" duration="11138000" />
       <workItem from="1580831031787" duration="4924000" />
+      <workItem from="1581807607009" duration="48000" />
+      <workItem from="1582306085376" duration="3058000" />
+      <workItem from="1582320076747" duration="353000" />
+      <workItem from="1582378695001" duration="1517000" />
+      <workItem from="1582469561151" duration="770000" />
     </task>
     <servers />
   </component>
