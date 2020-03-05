@@ -19,8 +19,11 @@ class TweetClassifer:
         return encoded_batch
 
     def classify_tweet_batch(self, tweet_batch):
+        print("tweets received")
         preprocessed_tweet_batch = self.preprocess_batch(tweet_batch)
+        print("tweets preprocessed")
         predictions = self.model.predict_on_batch(preprocessed_tweet_batch)
+        print("predictions made ")
         predictions = tf.math.argmax(predictions, 1)
         print(predictions)
         predictions_output = [0, 0, 0, 0]
@@ -35,4 +38,5 @@ class TweetClassifer:
             elif prediction == 3:
                 predictions_output[3] = predictions_output[3] + 1
 
+        print("tweet classification finished")
         return predictions_output
