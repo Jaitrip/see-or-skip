@@ -34,7 +34,7 @@ class PostExtractor:
         auth.set_access_token(self.access_token, self.access_token_secret)
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
-        tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(5000)
+        tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(100)
         print("tweets extracted")
         unique_clean_tweets = self.clean_up_tweets(tweets)
         print("tweets cleaned")
