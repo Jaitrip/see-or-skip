@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d6cf48e1-4b8b-41bc-a5ed-229b6616125d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PostExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/PostExtractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainMovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainMovieClassifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/twitter_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/twitter_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/encoder.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/models/encoder.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/twitter_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/models/twitter_model.h5" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +26,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -65,6 +61,7 @@
       <workItem from="1582320076747" duration="353000" />
       <workItem from="1582378695001" duration="1517000" />
       <workItem from="1582469561151" duration="770000" />
+      <workItem from="1582556290358" duration="913000" />
     </task>
     <servers />
   </component>
