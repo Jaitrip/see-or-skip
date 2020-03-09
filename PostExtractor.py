@@ -18,6 +18,7 @@ class PostExtractor:
         tweets_text = []
         for tweet in tweets:
             if not tweet.retweeted and 'RT' not in tweet.full_text:
+                print(tweet.full_text)
                 clean_tweet = p.clean(tweet.full_text)
                 emoji_less_tweet = emoji.demojize(clean_tweet)
                 punctuation_less_tweet = re.sub('[^A-Za-z0-9 ]+', '', emoji_less_tweet)
@@ -34,7 +35,6 @@ class PostExtractor:
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
         tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(100)
-        print(tweets)
         print("tweets extracted")
         unique_clean_tweets = self.clean_up_tweets(tweets)
         print("tweets cleaned")

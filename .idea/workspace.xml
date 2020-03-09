@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d6cf48e1-4b8b-41bc-a5ed-229b6616125d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="see-or-skip" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,7 +65,17 @@
       <workItem from="1582320076747" duration="353000" />
       <workItem from="1582378695001" duration="1517000" />
       <workItem from="1582469561151" duration="770000" />
-      <workItem from="1582556290358" duration="913000" />
+      <workItem from="1582839462303" duration="1368000" />
+      <workItem from="1582909405709" duration="1442000" />
+      <workItem from="1583000080559" duration="2241000" />
+      <workItem from="1583020888205" duration="38000" />
+      <workItem from="1583277849456" duration="3046000" />
+      <workItem from="1583331950187" duration="7132000" />
+      <workItem from="1583457937166" duration="1992000" />
+      <workItem from="1583498881172" duration="6549000" />
+      <workItem from="1583626746139" duration="2566000" />
+      <workItem from="1583686443903" duration="5424000" />
+      <workItem from="1583711224175" duration="3041000" />
     </task>
     <servers />
   </component>
