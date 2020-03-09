@@ -37,6 +37,7 @@ class YoutubeCommentExtractor:
 
         request = requests.get(URL, PARAMS)
         response = request.json()
+        print(response)
         video_comments = response["items"]
         comments = []
         for comment in video_comments:
@@ -93,3 +94,5 @@ class YoutubeCommentExtractor:
             for comment in comments:
                 writer.writerow([comment, 2])
 
+#extractor = YoutubeCommentExtractor("AIzaSyB5cHhVmwV8u9MOFwz8tD_FMIRf-riunW4")
+#print(extractor.getMovieComments("Mulan"))
