@@ -3,8 +3,8 @@ from flask_cors import CORS, cross_origin
 import TwitterCredentials
 import CommentClassifier
 import PostExtractor
-from YoutubeCommentClassifier import YoutubeCommentExtractor
-from YoutubeCommentClassifier import YoutubeCredentials
+import YoutubeCommentExtractor
+import YoutubeCredentials
 
 app = Flask(__name__)
 cors = CORS(app)
