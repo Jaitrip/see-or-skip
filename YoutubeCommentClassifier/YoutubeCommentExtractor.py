@@ -17,14 +17,19 @@ class YoutubeCommentExtractor:
             "maxResults" : "10"
         }
 
-        request = requests.get(URL, PARAMS)
-        response = request.json()
-        movie_trailers = response["items"]
-        trailer_ids = []
-        for trailer in movie_trailers:
-            trailer_ids.append(trailer["id"]["videoId"])
+        try:
+            request = requests.get(URL, PARAMS)
+            response = request.json()
+            movie_trailers = response["items"]
+            trailer_ids = []
+            for trailer in movie_trailers:
+                trailer_ids.append(trailer["id"]["videoId"])
 
-        return trailer_ids
+            return trailer_ids
+
+        except:
+            print("Exception")
+            return []
 
     def getVideoComments(self, video_id):
         URL = "https://www.googleapis.com/youtube/v3/commentThreads"
@@ -35,18 +40,23 @@ class YoutubeCommentExtractor:
             "maxResults" : "100",
         }
 
-        request = requests.get(URL, PARAMS)
-        response = request.json()
-        print(response)
-        video_comments = response["items"]
-        comments = []
-        for comment in video_comments:
-            comments.append(comment["snippet"]["topLevelComment"]["snippet"]["textOriginal"])
-            if int(comment["snippet"]["totalReplyCount"]) > 10:
-                replies = self.getCommentReplies(comment["snippet"]["topLevelComment"]["id"])
-                comments = comments + replies
+        try :
+            request = requests.get(URL, PARAMS)
+            response = request.json()
+            print(response)
+            video_comments = response["items"]
+            comments = []
+            for comment in video_comments:
+                comments.append(comment["snippet"]["topLevelComment"]["snippet"]["textOriginal"])
+                if int(comment["snippet"]["totalReplyCount"]) > 10:
+                    replies = self.getCommentReplies(comment["snippet"]["topLevelComment"]["id"])
+                    comments = comments + replies
 
-        return comments
+            return comments
+
+        except:
+            print("Exception Occured")
+            return []
 
     def getCommentReplies(self, comment_id):
         URL = "https://www.googleapis.com/youtube/v3/comments"
@@ -56,14 +66,20 @@ class YoutubeCommentExtractor:
             "maxResults" : "100",
             "key": self.api_key
         }
-        request = requests.get(URL, PARAMS)
-        response = request.json()
-        comment_responses = response["items"]
-        comments_text = []
-        for response in comment_responses:
-            comments_text.append(response["snippet"]["textOriginal"])
 
-        return comments_text
+        try:
+            request = requests.get(URL, PARAMS)
+            response = request.json()
+            comment_responses = response["items"]
+            comments_text = []
+            for response in comment_responses:
+                comments_text.append(response["snippet"]["textOriginal"])
+
+            return comments_text
+
+        except:
+            print("Exception")
+            return []
 
     def getMovieComments(self, movie_name):
         movie_ids = self.getMovieTrailerIds(movie_name)
