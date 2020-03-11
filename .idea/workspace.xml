@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CommentClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommentClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/MovieClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/YoutubeCommentExtractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCredentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/YoutubeCredentials.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
