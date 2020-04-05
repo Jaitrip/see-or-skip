@@ -1,8 +1,7 @@
 from flask import Flask, request, abort, jsonify
 from flask_cors import CORS, cross_origin
-import TwitterCredentials
 import CommentClassifier
-import PostExtractor
+from TwitterCommentClassifier import PostExtractor, TwitterCredentials
 from YoutubeCommentClassifier import YoutubeCommentExtractor
 from YoutubeCommentClassifier import YoutubeCredentials
 
@@ -10,11 +9,14 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+MODEL_PATH = "./models/movie_sentiment_cnn_model.h5"
+ENCODER_PATH = "./models/encoder"
+
 twitter_post_extractor = PostExtractor.PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
 youtube_comment_extractor = YoutubeCommentExtractor.YoutubeCommentExtractor(YoutubeCredentials.API_KEY)
-classifier = CommentClassifier.CommentClassifer()
+classifier = CommentClassifier.CommentClassifer(model_path=MODEL_PATH, encoder_path=ENCODER_PATH)
 
-@app.route('/see-or-skip/get_sentiment_classification', methods=['POST'])
+@app.route('/see-or-skip/get_sentiment', methods=['POST'])
 @cross_origin()
 def get_movie_sentiment():
     if not request.json or not 'movie_name' in request.json:
@@ -23,11 +25,11 @@ def get_movie_sentiment():
     movie_name = request.json['movie_name']
 
     movie_tweets = twitter_post_extractor.extract_tweets(movie_name)
-    tweet_sentiment_results = classifier.classify_comment_batch(movie_tweets)
+    tweet_sentiment_results = classifier.classify_comments(movie_tweets)
     print(tweet_sentiment_results)
 
     movie_youtube_comments = youtube_comment_extractor.getMovieComments(movie_name)
-    comment_sentiment_results = classifier.classify_comment_batch(movie_youtube_comments)
+    comment_sentiment_results = classifier.classify_comments(movie_youtube_comments)
     print(comment_sentiment_results)
 
     api_response = {

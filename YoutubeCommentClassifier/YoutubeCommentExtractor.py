@@ -13,7 +13,8 @@ class YoutubeCommentExtractor:
         PARAMS = {
             "key" : self.api_key,
             "part" : "snippet",
-            "q" : movie_name,
+            "q" : movie_name + " trailer",
+            "type" : "video",
             "maxResults" : "10"
         }
 
@@ -28,7 +29,7 @@ class YoutubeCommentExtractor:
             return trailer_ids
 
         except:
-            print("Exception")
+            print("Exception getting trailer ids")
             return []
 
     def getVideoComments(self, video_id):
@@ -43,7 +44,6 @@ class YoutubeCommentExtractor:
         try :
             request = requests.get(URL, PARAMS)
             response = request.json()
-            print(response)
             video_comments = response["items"]
             comments = []
             for comment in video_comments:
@@ -55,7 +55,7 @@ class YoutubeCommentExtractor:
             return comments
 
         except:
-            print("Exception Occured")
+            print("Exception getting comments")
             return []
 
     def getCommentReplies(self, comment_id):
@@ -78,7 +78,7 @@ class YoutubeCommentExtractor:
             return comments_text
 
         except:
-            print("Exception")
+            print("Exception getting comment replies")
             return []
 
     def getMovieComments(self, movie_name):
@@ -111,4 +111,4 @@ class YoutubeCommentExtractor:
                 writer.writerow([comment, 2])
 
 #extractor = YoutubeCommentExtractor("AIzaSyB5cHhVmwV8u9MOFwz8tD_FMIRf-riunW4")
-#print(extractor.getMovieComments("Mulan"))
+#extractor.saveCommentsToCSV("Ghostbusters Trailer", "../data/compare_data.csv")

@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6cf48e1-4b8b-41bc-a5ed-229b6616125d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ClassifyCSVComments.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierCNN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierNaiveBayers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierPooling1D.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierRNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CommentClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommentClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/MovieClassifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PostExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterCommentClassifier/PostExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrainMovieClassifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitterCredentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterCommentClassifier/TwitterCredentials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitterDatasetModelTrainer.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/twitter_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/movie_comments_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/movie_comments_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/twitter_training_data.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/models/encoder.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/models/encoder.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/twitter_model.h5" beforeDir="false" afterPath="$PROJECT_DIR$/models/twitter_model.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/twitter_data_encoder.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/twitter_model.h5" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +48,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jaimi\Desktop\IN3007_Individual_Project\see-or-skip\model_training" />
+      <recent name="C:\Users\Jaimi\Desktop\IN3007_Individual_Project\see-or-skip\TwitterCommentClassifier" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -81,7 +101,23 @@
       <workItem from="1583711224175" duration="3636000" />
       <workItem from="1583765365239" duration="1360000" />
       <workItem from="1583882994750" duration="2191000" />
-      <workItem from="1583940083358" duration="7994000" />
+      <workItem from="1583940083358" duration="13327000" />
+      <workItem from="1584022604702" duration="3016000" />
+      <workItem from="1584029741218" duration="5542000" />
+      <workItem from="1584128630451" duration="8655000" />
+      <workItem from="1584211931465" duration="438000" />
+      <workItem from="1584212861722" duration="7349000" />
+      <workItem from="1584541870035" duration="841000" />
+      <workItem from="1585574750768" duration="20493000" />
+      <workItem from="1585660518769" duration="102000" />
+      <workItem from="1585660633053" duration="258000" />
+      <workItem from="1585660901061" duration="25000" />
+      <workItem from="1585660935777" duration="21178000" />
+      <workItem from="1585758704072" duration="7152000" />
+      <workItem from="1585856527760" duration="1007000" />
+      <workItem from="1585920879453" duration="4908000" />
+      <workItem from="1586009205547" duration="14848000" />
+      <workItem from="1586095616664" duration="114000" />
     </task>
     <servers />
   </component>
