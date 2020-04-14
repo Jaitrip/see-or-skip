@@ -8,15 +8,6 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import itertools
 
-# Method to plot graphs
-def plot_graphs(history, string):
-    plt.plot(history.history[string])
-    plt.plot(history.history['val_' + string], '')
-    plt.xlabel("Epochs")
-    plt.ylabel(string)
-    plt.legend([string, 'val_' + string])
-    plt.show()
-
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
@@ -118,7 +109,6 @@ sentiment_analysis_model.add(layers.Dense(64, activation="relu"))
 sentiment_analysis_model.add(layers.Dense(1, activation="sigmoid"))
 sentiment_analysis_model.summary()
 '''
-
 
 sentiment_analysis_model = tf.keras.Sequential()
 sentiment_analysis_model.add(layers.Embedding(encoder.vocab_size, 64))

@@ -2,25 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6cf48e1-4b8b-41bc-a5ed-229b6616125d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ClassifyCSVComments.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierCNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierNaiveBayers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierPooling1D.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_training/MovieClassifierRNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommentClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/CommentClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MovieClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/MovieClassifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PostExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterCommentClassifier/PostExtractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainMovieClassifier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitterCredentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterCommentClassifier/TwitterCredentials.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitterDatasetModelTrainer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/YoutubeCommentClassifier/YoutubeCommentExtractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/movie_comments_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/movie_comments_dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/twitter_training_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/encoder.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/models/encoder.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/twitter_data_encoder.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/twitter_model.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitterCommentClassifier/PostExtractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterCommentClassifier/PostExtractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_training/TrainReviewClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training/TrainReviewClassifier.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +103,12 @@
       <workItem from="1585920879453" duration="4908000" />
       <workItem from="1586009205547" duration="14848000" />
       <workItem from="1586095616664" duration="114000" />
+      <workItem from="1586105807936" duration="9770000" />
+      <workItem from="1586204767905" duration="624000" />
+      <workItem from="1586278753119" duration="4925000" />
+      <workItem from="1586304217223" duration="772000" />
+      <workItem from="1586347373212" duration="7467000" />
+      <workItem from="1586785221980" duration="3662000" />
     </task>
     <servers />
   </component>

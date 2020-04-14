@@ -1,7 +1,7 @@
 from flask import Flask, request, abort, jsonify
 from flask_cors import CORS, cross_origin
 import CommentClassifier
-from TwitterCommentClassifier import PostExtractor, TwitterCredentials
+from TwitterCommentClassifier import ExtractTweetsFromAPI, TwitterCredentials
 from YoutubeCommentClassifier import YoutubeCommentExtractor
 from YoutubeCommentClassifier import YoutubeCredentials
 
@@ -12,7 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 MODEL_PATH = "./models/movie_sentiment_cnn_model.h5"
 ENCODER_PATH = "./models/encoder"
 
-twitter_post_extractor = PostExtractor.PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
+twitter_post_extractor = ExtractTweetsFromAPI.ExtractTweetsFromAPI(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
 youtube_comment_extractor = YoutubeCommentExtractor.YoutubeCommentExtractor(YoutubeCredentials.API_KEY)
 classifier = CommentClassifier.CommentClassifer(model_path=MODEL_PATH, encoder_path=ENCODER_PATH)
 
