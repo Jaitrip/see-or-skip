@@ -18,7 +18,7 @@ class ExtractTweetsFromAPI:
             'count': 100,
             'lang': 'en',
             'until': date,
-            'result_type': 'mixed'
+            'result_type': 'recent'
         }
 
         results = requests.get(url=self.url, params=params, auth=self.auth)
@@ -44,11 +44,13 @@ class ExtractTweetsFromAPI:
         week_day = datetime.datetime.now().isocalendar()[2]
         start_date = datetime.datetime.now() - datetime.timedelta(days=week_day)
         dates = [str((start_date - datetime.timedelta(days=i)).date()) for i in range(7)]
+        print(dates)
 
         tweets = []
         for day in dates:
             tweets = tweets + self.get_tweets_until(movie_name, day)
 
+        print(len(tweets))
         clean_tweets = self.clean_up_tweets(tweets)
 
         return clean_tweets
