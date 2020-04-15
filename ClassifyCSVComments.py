@@ -3,7 +3,6 @@ import numpy as np
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 import nltk
-nltk.download('stopwords')
 import tensorflow as tf
 import tensorflow_datasets as tfds
 from TwitterCommentClassifier import PostExtractor, TwitterCredentials
