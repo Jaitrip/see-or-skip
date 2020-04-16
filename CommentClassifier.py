@@ -8,7 +8,7 @@ import tensorflow_datasets as tfds
 class CommentClassifer:
 
     def __init__(self, model_path, encoder_path):
-        self.model = tf.keras.models.load_model(model_path)
+        self.model = tf.keras.models.load_model(model_path, compile=False)
         self.stemmer = PorterStemmer()
         self.stop_words = set(stopwords.words("english"))
         self.tokenizer = tfds.features.text.Tokenizer()
