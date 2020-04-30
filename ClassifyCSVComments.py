@@ -1,19 +1,15 @@
 import csv
-import numpy as np
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
-import nltk
 import tensorflow as tf
 import tensorflow_datasets as tfds
-from TwitterCommentClassifier import PostExtractor, TwitterCredentials
-from YoutubeCommentClassifier import YoutubeCommentExtractor
-from YoutubeCommentClassifier import YoutubeCredentials
 
 class ClassifyCSVComments:
     def __init__(self, model_path, encoder_path):
         self.model = tf.keras.models.load_model(model_path)
         self.encoder = tfds.features.text.TokenTextEncoder.load_from_file(encoder_path)
 
+    # method to load comments from a csv
     def load_comments_from_csv(self, dataset_path):
         with open(dataset_path) as csvFile:
             csv_reader = csv.reader(csvFile, delimiter=',')
@@ -23,13 +19,16 @@ class ClassifyCSVComments:
         examples = []
         labels = []
 
+        # add labels and examples to a list
         for comment in comments:
             examples.append(comment[0].lower())
             labels.append(int(comment[1]))
 
         return examples, labels
 
+    # method to preprocess comments
     def preprocess_comments(self, examples):
+        # initalise objects to preprocess
         stemmer = PorterStemmer()
         stop_words = set(stopwords.words("english"))
         tokenizer = tfds.features.text.Tokenizer()
@@ -52,17 +51,22 @@ class ClassifyCSVComments:
 
             preprocessed_examples.append(tokenizer.join(stemmed_tokens))
 
+        # encode comments
         encoded_examples = []
         for comment in preprocessed_examples:
             encoded_examples.append(self.encoder.encode(comment))
 
+        # pad comments
         encoded_examples = tf.keras.preprocessing.sequence.pad_sequences(encoded_examples, maxlen=50, padding='post')
 
         return encoded_examples
 
+    # method to get the comment predictions and compare to the actual labels
     def get_predictions_and_accuracy(self, examples, labels, isSoftmax):
+        # get predictions
         raw_predictions = self.model.predict_on_batch(examples)
 
+        # if its a softmax model
         if isSoftmax:
             predictions = tf.math.argmax(raw_predictions, 1)
         else:
@@ -72,7 +76,7 @@ class ClassifyCSVComments:
                     predictions.append(2)
                 else:
                     predictions.append(0)
-
+        # check if the prediction is correct
         correct = 0
         for i in range(len(labels)):
             if predictions[i] == labels[i]:
@@ -80,6 +84,7 @@ class ClassifyCSVComments:
 
         accuracy = correct / len(labels)
 
+        # return prediction breakdown
         if isSoftmax:
             predictions_output = [0, 0, 0]
             for prediction in predictions:
@@ -99,26 +104,10 @@ class ClassifyCSVComments:
 
         return predictions_output, accuracy
 
+    # method to save comments to a csv file
     def save_comments_to_csv(self, file_path, comments):
         with open(file_path, 'a', newline='') as csvFile:
             writer = csv.writer(csvFile)
 
             for comment in comments:
                 writer.writerow([comment, 1])
-
-
-dataset = "./data/movie_data.csv"
-csvClassifier = ClassifyCSVComments(model_path="./models/movie_sentiment_model.h5", encoder_path="./models/encoder")
-examples, labels = csvClassifier.load_comments_from_csv(dataset)
-preprocessed_examples = csvClassifier.preprocess_comments(examples)
-print(csvClassifier.get_predictions_and_accuracy(preprocessed_examples, labels, True))
-
-'''
-twitter_post_extractor = PostExtractor.PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
-youtube_comment_extractor = YoutubeCommentExtractor.YoutubeCommentExtractor(YoutubeCredentials.API_KEY)
-
-movie_tweets = twitter_post_extractor.extract_tweets("Soul Trailer")
-movie_youtube_comments = youtube_comment_extractor.getMovieComments("Soul Trailer")
-comments = movie_tweets + movie_youtube_comments
-csvClassifier.save_comments_to_csv(dataset, comments)
-'''

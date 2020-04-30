@@ -14,6 +14,7 @@ class CommentClassifer:
         self.tokenizer = tfds.features.text.Tokenizer()
         self.encoder = tfds.features.text.TokenTextEncoder.load_from_file(encoder_path)
 
+    # preprocess comments
     def preprocess_comments(self, comments):
         preprocessed_comments = []
         for text in comments:
@@ -33,20 +34,25 @@ class CommentClassifer:
 
             preprocessed_comments.append(self.tokenizer.join(stemmed_tokens))
 
+        # encode the comments
         encoded_comments = []
         for comment in preprocessed_comments:
             encoded_comments.append(self.encoder.encode(comment))
 
+        # pad the comments
         encoded_examples = tf.keras.preprocessing.sequence.pad_sequences(encoded_comments, maxlen=50, padding='post')
         return encoded_examples
 
+    # classify comments
     def classify_comments(self, comments):
+        # use model to make predictions on each tweet
         preprocessed_comments = self.preprocess_comments(comments)
         predictions = self.model.predict_on_batch(preprocessed_comments)
         predictions = tf.math.argmax(predictions, 1)
         print(predictions)
         predictions_output = [0, 0, 0]
 
+        # create an array of containing the counts for each category
         for prediction in predictions:
             if prediction == 0:
                 predictions_output[0] = predictions_output[0] + 1

@@ -12,11 +12,15 @@ class PostExtractor:
         self.access_token = access_token
         self.access_token_secret = access_token_secret
 
+    # preprocess tweets
     def clean_up_tweets(self, tweets):
+        # initalise preprocesser with options to remove urls and user mentions
         p.set_options(p.OPT.URL, p.OPT.MENTION)
         tweets_text = []
         for tweet in tweets:
+            # if the tweet is not a retweet then preprocess
             if not tweet.retweeted and 'RT' not in tweet.full_text:
+                # clean tweet, convert emojis to text and remove punctuation
                 clean_tweet = p.clean(tweet.full_text)
                 emoji_less_tweet = emoji.demojize(clean_tweet)
                 punctuation_less_tweet = re.sub('[^A-Za-z0-9 ]+', '', emoji_less_tweet)
@@ -27,17 +31,19 @@ class PostExtractor:
 
         return unique_tweets
 
+    # extract tweets from api
     def extract_tweets(self, movie_name):
+        # create oauth handler and initalise apui connection
         auth = tweepy.OAuthHandler(self.api_key, self.api_secret_key)
         auth.set_access_token(self.access_token, self.access_token_secret)
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
+        # extract 1000 tweets from the api related to the movie
         tweets = tweepy.Cursor(api.search, q=movie_name, lang='en', tweet_mode='extended').items(1000)
-        print("tweets extracted")
         unique_clean_tweets = self.clean_up_tweets(tweets)
-        print("tweets cleaned")
         return unique_clean_tweets
 
+    # extract tweets and save to a CSV file
     def extract_training_data(self, movie_name, dataset_path):
         tweets = self.extract_tweets(movie_name)
 
@@ -47,7 +53,3 @@ class PostExtractor:
 
             for tweet in tweets:
                 writer.writerow([tweet, 2])
-
-
-#post_extractor = PostExtractor(TwitterCredentials.API_KEY, TwitterCredentials.API_SECRET_KEY, TwitterCredentials.ACCESS_TOKEN, TwitterCredentials.ACCESS_TOKEN_SECRET)
-#post_extractor.extract_training_data("Black Widow", "./data/twitter_data.csv")

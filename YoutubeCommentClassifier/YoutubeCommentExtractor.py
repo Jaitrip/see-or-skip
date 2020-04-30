@@ -8,6 +8,7 @@ class YoutubeCommentExtractor:
     def __init__(self, api_key):
         self.api_key = api_key
 
+    # get movie trailer ids from youtube api
     def getMovieTrailerIds(self, movie_name):
         URL = "https://www.googleapis.com/youtube/v3/search"
         PARAMS = {
@@ -19,6 +20,7 @@ class YoutubeCommentExtractor:
         }
 
         try:
+            # make request and save the ids
             request = requests.get(URL, PARAMS)
             response = request.json()
             movie_trailers = response["items"]
@@ -29,9 +31,11 @@ class YoutubeCommentExtractor:
             return trailer_ids
 
         except:
+            # if there is an error then return an empty list
             print("Exception getting trailer ids")
             return []
 
+    # for each video, get 100 comments
     def getVideoComments(self, video_id):
         URL = "https://www.googleapis.com/youtube/v3/commentThreads"
         PARAMS = {
@@ -42,12 +46,15 @@ class YoutubeCommentExtractor:
         }
 
         try :
+            # make http request to the api
             request = requests.get(URL, PARAMS)
             response = request.json()
             video_comments = response["items"]
+            # save comments to a list
             comments = []
             for comment in video_comments:
                 comments.append(comment["snippet"]["topLevelComment"]["snippet"]["textOriginal"])
+                # if the comment has more than 10 replies, then get all of the comment replies
                 if int(comment["snippet"]["totalReplyCount"]) > 10:
                     replies = self.getCommentReplies(comment["snippet"]["topLevelComment"]["id"])
                     comments = comments + replies
@@ -55,9 +62,11 @@ class YoutubeCommentExtractor:
             return comments
 
         except:
+            # if an exception occurs then return an empty list
             print("Exception getting comments")
             return []
 
+    # get replies to a particular comment
     def getCommentReplies(self, comment_id):
         URL = "https://www.googleapis.com/youtube/v3/comments"
         PARAMS = {
@@ -68,6 +77,7 @@ class YoutubeCommentExtractor:
         }
 
         try:
+            # make http request and save all of the comment replies as a list
             request = requests.get(URL, PARAMS)
             response = request.json()
             comment_responses = response["items"]
@@ -78,9 +88,11 @@ class YoutubeCommentExtractor:
             return comments_text
 
         except:
+            # if a exception occurs, return an empty list
             print("Exception getting comment replies")
             return []
 
+    # method which combines all of the other methods
     def getMovieComments(self, movie_name):
         movie_ids = self.getMovieTrailerIds(movie_name)
         all_comments = []
@@ -91,17 +103,19 @@ class YoutubeCommentExtractor:
         clean_comments = self.clean_comments(all_comments)
         return clean_comments
 
-
+    # convert emojis to text and remove punctuation
     def clean_comments(self, comments):
         preprocessed_comments = []
         for comment in comments:
-            emoji_less_comment = emoji.demojize(comment)
+            emoji_less_comment = emoji.demojize(comment.lower())
             punctuation_less_comment = re.sub('[^A-Za-z0-9 ]+', '', emoji_less_comment)
             preprocessed_comments.append(punctuation_less_comment)
 
-        return preprocessed_comments
+        unique_comments = list(set(preprocessed_comments))
 
+        return unique_comments
 
+    # method to save extracted comments to a csv file
     def saveCommentsToCSV(self, movie_name, dataset_path):
         comments = self.getMovieComments(movie_name)
         with open(dataset_path, 'a', newline='') as csvFile:
@@ -109,6 +123,3 @@ class YoutubeCommentExtractor:
 
             for comment in comments:
                 writer.writerow([comment, 2])
-
-#extractor = YoutubeCommentExtractor("AIzaSyB5cHhVmwV8u9MOFwz8tD_FMIRf-riunW4")
-#extractor.saveCommentsToCSV("Ghostbusters Trailer", "../data/compare_data.csv")
